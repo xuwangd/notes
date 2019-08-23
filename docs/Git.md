@@ -1,3 +1,12 @@
+#### 增删查看文件、文件夹
+- mkdir xx 
+- rmdir xx
+- echo ''>>xx.txt
+- rm -rf xx
+- ls -a
+
+
+
 #### 几个区
 1. Workspace：工作区
 2. Index/Stage：暂存区
@@ -26,23 +35,28 @@
 
 
 
-#### 添加/删除文件
+#### 添加文件
 1. git add [file1] [file2] ... //添加指定文件到暂存区
 
 2. git add . //添加当前目录的所有文件到暂存区
 
-3. git rm [file1] [file2] ... //删除工作区文件，并且将这次删除放入暂存区
 
-4. git rm --cached [file1] [file2] ... //停止追踪指定文件，但该文件会保留在工作区
 
-5. git mv [file-original] [file-renamed] //改名文件，并且将这个改名放入暂存区（被追踪文件）
+
+#### 删除文件
+1. git rm [file1] [file2] ... //删除工作区文件，并且将这次删除放入暂存区
+
+2. git rm --cached [file1] [file2] ... //停止追踪指定文件，但该文件会保留在工作区（还未提交过的文件）
+
+3. git mv [file-original] [file-renamed] //改名文件，并且将这个改名放入暂存区（被追踪文件）
+
 
 
 
 #### 代码提交
 1. git commit [file1] [file2] ... -m [message] //提交暂存区的指定文件到仓库区
 
-2. git commit --amend -m [message]
+2. git commit --amend//（按i键开始编辑、按Esc退出编辑、:wq+Enter完成编辑）
 
 
 
@@ -59,9 +73,23 @@
 
 6. git checkout -b [branch] //新建一个分支，并切换到该分支
 
-7. git branch -d [branch-name] //删除分支
+7. git branch -d [branch-name] //删除分支 （git branch -D [branch-name]慎用-D）
 
-8. git branch -dr [remote/branch] git push origin --delete [branch-name] //删除远程分支 
+8. git push origin --delete [branch-name]     git branch -dr [remote/branch] //删除远程分支 
+
+
+
+#### 分支合并
+1. git fetch 
+
+2. git merge
+
+3. git rebase
+
+4. git branch --merged //已经合并进来了的分支
+
+5. git branch --no-merged //还未合并进来的分支
+
 
 
 
@@ -116,16 +144,16 @@
 8. git reset --hard [commit] //重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
 
 
-#### 暂时将未提交的变化移除，稍后再移入
-1. git stash
+#### 暂时将未提交的变化移除，稍后再移入（前提该文件为被追踪文件）
+1. git stash //添加
 
-2. git stash pop
+2. git stash apply @stash{0}
 
-3. git stash apply 0
+3. git stash drop @stash{0}
 
-4. git fetch 
+4. git stash list //查看
 
-5. git merge 
+
 
 
 #### 其他
